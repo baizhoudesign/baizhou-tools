@@ -1,0 +1,8 @@
+{
+  "name": "baizhou-tools",
+  "description": "白晝工作室自製工具包，包含拆圖（split-image）等設計自動化 skill。",
+  "author": {
+    "name": "Baizhou Studio",
+    "email": "hello@baizhou.tw"
+  }
+}
