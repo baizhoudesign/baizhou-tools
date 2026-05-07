@@ -95,6 +95,111 @@ description: 白晝品牌設計提案產生器 v2 — 5 章節結構（Backgroun
 
 ---
 
+## CSS 系統速查（`colors_and_type.css`）
+
+> 下列 token 和 class 在所有 baizhou proposal 通用，不要寫 magic number，用變數。
+
+### 色彩 Token
+
+| 用途 | Token | 值 |
+|---|---|---|
+| 主文字 | `--fg-1` / `--bz-ink` | #111111 |
+| 次文字 | `--fg-2` | #3D3D3D |
+| 說明文字 | `--fg-3` | #757575 |
+| 頁面底色 | `--bg-1` / `--bz-paper` | #FFFFFF |
+| 卡片底色 | `--bg-3` | #F7F7F7 |
+| 細線 | `--line-1` | #DCDCDC |
+| 黑（反底） | `--bz-black` / `--bg-inverse` | #0A0A0A |
+
+### 字體家族
+
+| 用途 | Token |
+|---|---|
+| 拉丁 / 混排 body | `--font-pair`（Inter + Noto Sans TC）|
+| 純英文 / 數字 | `--font-sans`（Inter）|
+| 中文 | `--font-tc`（Noto Sans TC）|
+| 大標展示 | `--font-display`（Inter + Noto Sans TC）|
+| 等寬 | `--font-mono`（JetBrains Mono）|
+
+### 字級 Token
+
+| Token | 值 | 用途 |
+|---|---|---|
+| `--fs-display` | clamp(56px, 9vw, 132px) | Hero 大標 |
+| `--fs-h1` | 56px | 頁面主標 |
+| `--fs-h2` | 40px | 章節標 |
+| `--fs-h3` | 28px | 小標 |
+| `--fs-h4` | 20px | 標籤大字 |
+| `--fs-lead` | 18px | 導讀段落 |
+| `--fs-body` | 15px | 一般內文 |
+| `--fs-caption` | 11px | eyebrow / label |
+
+### 提案字級邏輯（實際使用的尺寸 → 對應用途）
+
+> CSS token 是基準，提案頁面通常用 inline style 覆蓋以配合版面比例。
+
+| 字級 | 用途 | 範例 |
+|---|---|---|
+| **168px** | 單字展示（字形解析） | 「爐」「邸」字形細節頁 |
+| **132px** | 封面 / 章節 divider 大標 | Cover「爐邸」英文大字 |
+| **84px** | Concept 標題（一行內） | `Heritage.`、`New Chapter.` |
+| **64px** | 頁面主標（兩字英文） | `Two directions.` |
+| **44px** | 方向卡標題 / 中等英文標 | Direction A/B 卡片英文概念 |
+| **36px** | 中文大標 | 章節中文副標 |
+| **32px** | 中文副標 / 方向卡中文 | `承襲圍爐手筆`、`現代宅邸` |
+| **26px** | 較大 body（重點說明） | 方向說明一段 |
+| **22px** | 標準 body-tc（內文） | 各頁說明文字 |
+| **18px** | lead / 英文 body | 頁面導讀段 |
+| **16px** | 小說明 / 表格內文 | 表格欄位內容 |
+| **20px** | 中等標籤 / 小節標 | 四欄應用清單標題 |
+
+**原則：**
+- 一頁最多出現 3 個不同字級（不含 eyebrow）
+- 中英文對照時：英文大 → 中文中（比例約 1.3:1）
+- 滿版 hero 字：84px 以上；普通內頁：22–44px 區間
+
+### 常用 Class
+
+| Class | 規格 | 使用時機 |
+|---|---|---|
+| `.eyebrow` | 11px, 大寫, letter-spacing 0.18em, `--fg-3` | 章節標籤（如 `DIRECTION A`、`CONCEPT`）|
+| `.caption` | 同 eyebrow | 說明小標 |
+| `.lead` | 18px, line-height snug, `--fg-1` | 每頁第一段導語 |
+| `.small` | 13px, `--fg-3` | 備註、來源 |
+| `.mono` | JetBrains Mono 13px | 技術資料、代碼 |
+
+### 提案頁面常用 Inline 類（`slide-system.css`）
+
+| Class | 用途 |
+|---|---|
+| `.frame` | 每一頁的外容器 |
+| `.col` | flex-direction: column |
+| `.flex` | flex-direction: row |
+| `.grow` | flex: 1（撐滿剩餘空間）|
+| `.card` | 卡片容器（有 border + padding）|
+| `.gap-md` | gap 24px |
+| `.gap-xl` | gap 48px |
+
+### 按鈕 / 圓角
+
+- **Capsule button（膠囊形）**：`border-radius: var(--r-pill)` = 999px
+- **一般容器**：預設 `border-radius: 0`（editorial 風格 — 方正為主）
+- **輕微圓角**：`--r-2` = 4px（少用）
+
+### 間距 Scale（4-based）
+
+`4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 96px`（`--sp-1` 到 `--sp-9`）
+
+### 陰影（幾乎不用，editorial 系統是 flat）
+
+| Token | 效果 | 用時機 |
+|---|---|---|
+| `--shadow-1` | 極細底線 | 分隔用 |
+| `--shadow-2` | 輕卡片陰影 | hover |
+| `--shadow-3` | 深陰影 | modal（提案幾乎不用）|
+
+---
+
 ## 內容紀律（中文段落禁用詞）
 
 | 禁用 | 改用 | 為什麼 |
