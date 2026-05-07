@@ -588,6 +588,156 @@ vercel alias set "$LATEST" 客戶名-baizhou.vercel.app
 
 ---
 
+## 子頁模板庫（章節內常用頁型）
+
+### 模板 F｜Naming 命名頁（左文右字形）
+
+```html
+<section data-label="NN 命名">
+  <div class="frame">
+    <div class="eyebrow-row">
+      <span><span class="arrow">↗</span>STRATEGY ｜ 03.1</span>
+      <span>NAMING</span>
+    </div>
+    <div class="flex grow gap-xl" style="padding-top: 28px;">
+      <!-- 左：文字說明 -->
+      <div class="col" style="flex: 1.1; justify-content: center;">
+        <div class="eyebrow" style="margin-bottom: 32px;">NAMING RATIONALE</div>
+        <h2 class="title-en" style="font-size: 96px;">Why</h2>
+        <div class="title-tc" style="font-size: 48px; font-weight: 400;">為什麼叫品牌名</div>
+        <div class="body-tc" style="margin-top: 32px; max-width: 600px;">
+          口頭一句話解釋：<strong style="color: var(--bz-ink); font-weight: 500;">「命名口訣。」</strong>補充說明一到兩句。
+        </div>
+      </div>
+      <!-- 右：兩個漢字拆解 -->
+      <div class="col" style="flex: 1.1; gap: 32px; justify-content: center;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div class="card col" style="padding: 48px 36px; gap: 16px;">
+            <div class="eyebrow" style="color: var(--bz-ink);">CHAR.01</div>
+            <div class="title-tc" style="font-size: 168px; font-weight: 500; line-height: 0.9;">字</div>
+            <div class="body-tc" style="font-size: 26px; color: var(--bz-ink); margin-top: 8px;">來源說明</div>
+            <div class="body" style="font-size: 22px; color: var(--bz-gray-500); letter-spacing: 0.1em; text-transform: uppercase;">English meaning</div>
+          </div>
+          <!-- 第二字：黑底 highlight -->
+          <div class="card col" style="padding: 48px 36px; gap: 16px; background: var(--bz-ink); color: var(--bz-paper); border-color: var(--bz-ink);">
+            <div class="eyebrow" style="color: rgba(250,250,248,0.55);">CHAR.02</div>
+            <div class="title-tc" style="font-size: 168px; font-weight: 500; line-height: 0.9; color: var(--bz-paper);">字</div>
+            <div class="body-tc" style="font-size: 26px; color: var(--bz-paper); margin-top: 8px;">來源說明</div>
+            <div class="body" style="font-size: 22px; color: rgba(250,250,248,0.55); letter-spacing: 0.1em; text-transform: uppercase;">English meaning</div>
+          </div>
+        </div>
+        <div class="body-tc" style="font-size: 22px; color: var(--bz-gray-500); text-align: center; line-height: 1.6;">
+          發音 <strong style="color: var(--bz-ink); font-weight: 500;">ROMAN</strong> ｜ 補充說明
+        </div>
+      </div>
+    </div>
+    <div class="page-foot"><span></span><span>NN / 總頁數</span></div>
+  </div>
+</section>
+```
+
+---
+
+### 模板 G｜Red Lines 紅線頁（3 欄等寬，全粗線）
+
+```html
+<section data-label="NN 紅線">
+  <div class="frame">
+    <div class="eyebrow-row">
+      <span><span class="arrow">↗</span>IDENTITY ｜ 04.5</span>
+      <span>WHAT WE WON'T BECOME</span>
+    </div>
+    <div class="col grow" style="padding-top: 32px; padding-bottom: 80px;">
+      <h2 class="title-en">What we won't become.</h2>
+      <div class="subtitle-tc" style="margin-top: 16px; color: var(--bz-gray-700);">三條紅線 — 設計往這裡走，就回頭</div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; flex: 1; margin-top: 40px;">
+        <!-- 每欄都用 2px solid ink 粗線（紅線頁不做 highlight 區分） -->
+        <div class="col" style="border-top: 2px solid var(--bz-ink); padding-top: 32px; gap: 20px;">
+          <div class="eyebrow" style="color: var(--bz-ink);">RED LINE 01</div>
+          <div class="title-tc" style="font-size: 40px; font-weight: 500; line-height: 1.2;">紅線標題</div>
+          <div class="rule-thin"></div>
+          <div class="body-tc" style="font-size: 24px; line-height: 1.55;">→ 如果這樣做會發生的後果</div>
+        </div>
+        <!-- 再複製兩欄，改 RED LINE 02 / 03 -->
+      </div>
+    </div>
+    <div class="page-foot"><span></span><span>NN / 總頁數</span></div>
+  </div>
+</section>
+```
+
+---
+
+### 模板 H｜Mood Grid 氛圍圖片牆（4×3 或 3×3）
+
+```html
+<section data-label="NN Mood Elements">
+  <div class="frame">
+    <div class="eyebrow-row">
+      <span><span class="arrow">↗</span>IDENTITY ｜ 04.X</span>
+      <span>MOOD ｜ ELEMENTS</span>
+    </div>
+    <div class="col grow" style="padding-top: 24px; padding-bottom: 24px;">
+      <h2 class="title-en">Visual elements.</h2>
+      <div class="subtitle-tc" style="margin-top: 12px; color: var(--bz-gray-700);">符號、字體、線條 — 細節層級的視覺氛圍</div>
+      <!-- 4×3 grid（12 張圖） -->
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(3, 1fr); gap: 8px; flex: 1; min-height: 0; margin-top: 24px;">
+        <div style="background-image: url('assets/mood-01.jpg'); background-size: cover; background-position: center;"></div>
+        <!-- 重複 11 次，共 12 格 -->
+        <!-- Logo/文字類圖用 background-size: contain; background-repeat: no-repeat; background-color: white 或 black -->
+      </div>
+    </div>
+    <div class="page-foot"><span></span><span>NN / 總頁數</span></div>
+  </div>
+</section>
+```
+
+> **3×3 mood board**（空間氛圍）：`grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr)` — 9 張圖。
+
+---
+
+### 模板 I｜Next Steps 下一步（4 欄 status card）
+
+```html
+<section data-label="NN 下一步">
+  <div class="frame">
+    <div class="eyebrow-row">
+      <span><span class="arrow">↗</span>ROLLOUT ｜ 05.3</span>
+      <span>NEXT STEPS</span>
+    </div>
+    <div class="col grow" style="padding-top: 32px; padding-bottom: 110px;">
+      <h2 class="title-en">What comes next.</h2>
+      <div class="subtitle-tc" style="margin-top: 20px; color: var(--bz-gray-700);">方向確認後，X 步走完識別</div>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; flex: 1; margin-top: 40px;">
+        <!-- NEXT 卡（待處理）：黑邊 + "NEXT" badge -->
+        <div class="col" style="background: var(--bz-paper); padding: 40px 32px; gap: 20px; border: 2px solid var(--bz-ink); position: relative;">
+          <div style="position: absolute; top: 20px; right: 20px; font-size: 16px; font-weight: 500; letter-spacing: 0.18em; color: var(--bz-ink);">NEXT</div>
+          <div class="num" style="font-size: 80px; font-weight: 300; color: var(--bz-ink); letter-spacing: -0.02em; line-height: 1;">01</div>
+          <div class="eyebrow" style="color: var(--bz-ink);">動詞</div>
+          <div class="title-tc" style="font-size: 34px; font-weight: 500;">步驟標題</div>
+          <div class="rule-thin" style="background: var(--bz-ink); height: 2px;"></div>
+          <div class="body-tc" style="font-size: 22px; line-height: 1.55;">具體說明</div>
+        </div>
+        <!-- DONE 卡（已完成）：灰底 + 數字灰 -->
+        <div class="col" style="background: var(--bz-gray-50); padding: 40px 32px; gap: 20px; border: 1px solid var(--bz-gray-200); position: relative;">
+          <div class="num" style="font-size: 80px; font-weight: 300; color: var(--bz-gray-300); letter-spacing: -0.02em; line-height: 1;">02</div>
+          <div class="eyebrow" style="color: var(--bz-gray-400);">動詞</div>
+          <div class="title-tc" style="font-size: 34px; font-weight: 500; color: var(--bz-gray-600);">步驟標題</div>
+          <div class="rule-thin"></div>
+          <div class="body-tc" style="font-size: 20px; line-height: 1.5; color: var(--bz-gray-400);">具體說明</div>
+        </div>
+        <!-- 再複製兩張 DONE 卡，改 03 / 04 -->
+      </div>
+    </div>
+    <div class="page-foot"><span></span><span>NN / 總頁數</span></div>
+  </div>
+</section>
+```
+
+> **卡片狀態規則：** `NEXT`（待定）= 黑邊 2px + 白底 + NEXT badge；`DONE`（已完成）= 灰底 + 灰數字（不加 badge）。
+
+---
+
 ## 靈感參考
 
 對外提案結構研究：`research/proposal-architecture/standard-deck-modules.md`（如有更新請以該檔為準）
