@@ -484,9 +484,74 @@ vercel alias set "$LATEST" 客戶名-baizhou.vercel.app
 
 短網址會自動指向最新 production deployment，不用每次重設。
 
+> ⚠️ **陷阱：`vercel alias set` 不觸發重新 build。** 更新內容後一定要先跑 `vercel --prod` 產生新 deployment，再用 alias set 指向它。直接改 alias 指向舊 deployment = 內容不會更新。
+
 ---
 
-## Common Mistakes（這次 session 學到的）
+## Brand Voice 寫法公式
+
+格式：**`X, not Y.`** — 四句，每句說一個品牌立場。
+
+### 什麼是好的 statement
+
+| 好的 | 爛的 | 原因 |
+|---|---|---|
+| `Ritual, not routine.` | `Quality, not low quality.` | 爛的是廢話，好的有張力 |
+| `Homecoming, not gathering.` | `Warm and welcoming.` | 爛的是形容詞，好的是對比 |
+| `Private, not exclusive.` | `Premium dining experience.` | 爛的是行銷話術，好的有立場 |
+
+### 寫法步驟
+
+1. **先找 X（品牌想要的）** — 從 Brand Essence / 定位語抽關鍵詞
+2. **找 Y（容易被誤解的反面）** — 不是對立面，是「有點像但不對」的詞
+3. **測試**：把 X 換成競品，如果也說得通 → X 不夠獨特，重選
+4. **四句覆蓋四個維度**：情感 / 空間感 / 服務方式 / 品牌關係
+
+### 爐邸範例
+
+```
+Quiet, not cold.          → 精緻但不疏離
+Ritual, not routine.      → 吃飯是儀式不是例行公事
+Homecoming, not gathering.→ 像回家不像聚會
+Hospitality, not service. → 主人溫度不是服務生態度
+```
+
+### 常見錯誤
+
+- X 和 Y 是真正的反義詞（`warm, not cold`）→ 太普通，沒立場
+- 四句說同一件事 → 維度重疊，刪到剩兩句
+- 用太長的句子 → 每句最多 4 個字（英文），中文版附在下方當說明
+
+---
+
+## 圖片處理規則
+
+### cover vs contain 選擇
+
+| 情況 | 用法 | 說明 |
+|---|---|---|
+| 空間 / 食物 / 情境圖 | `background-size: cover` | 滿版填滿，允許裁切 |
+| Logo / 文字圖 / 白底圖 | `background-size: contain` | 完整顯示，加底色 |
+| 細節 reference 圖 | `background-size: contain` | 防止裁掉重要部分 |
+
+### Logo 圖放卡片底色規則
+
+| Logo 是 | 卡片底色 | 處理方式 |
+|---|---|---|
+| 黑色 logo | 白底 | 直接放，`background-color: white` |
+| 白色 logo | 黑底 | `background-color: black` 或品牌色 |
+| 黑色 logo 要放黑底 | — | `filter: invert(1) brightness(2)` |
+| 低解析度（IG 100×100）| — | 標記「待補高解析度」，先用 contain 縮小 |
+
+### Mood board 圖片比例
+
+- 圖片格用 `grid` 撐滿，不要用 `<img>` 固定寬高
+- 避免同一排全是橫幅圖（視覺單調）→ 穿插一兩格 contain 的 logo/文字圖打破節奏
+- 黑底圖和白底圖交錯排（明暗對比增加層次）
+
+---
+
+## Common Mistakes（累積清單）
 
 | ❌ 錯誤 | ✅ 正確做法 |
 |---|---|
