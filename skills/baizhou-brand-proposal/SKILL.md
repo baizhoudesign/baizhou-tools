@@ -95,6 +95,95 @@ description: 白晝品牌設計提案產生器 v2 — 5 章節結構（Backgroun
 
 ---
 
+## 版面構圖規則（每頁都要對照）
+
+### 呼吸空間
+
+| 區域 | 規則 |
+|---|---|
+| 頁面四邊 padding | 由 `slide-system.css` 的 `.frame` 控制，**不要用 inline margin 破壞** |
+| 標題到內容 | `margin-top: 32–48px`（小頁用 32，大頁用 48）|
+| 欄之間 gap | 3 欄用 `gap: 40–56px`；2 欄用 `gap: 32px`；圖片牆用 `gap: 8px` |
+| 標題英中之間 | `margin-top: 12–20px`（中文副標緊跟英文大標）|
+| 內容到頁腳 | `padding-bottom: 60–110px`（留出 page-foot 空間）|
+
+### 欄寬比例
+
+| 版型 | 比例 | 用途 |
+|---|---|---|
+| 左文右圖 | `flex: 1.1` / `flex: 1.1` | 命名頁、說明 + 視覺 |
+| 純 3 欄 | `repeat(3, 1fr)` | 三大論點、Red Lines |
+| 純 2 欄 | `repeat(2, 1fr)` | Two Directions |
+| 純 4 欄 | `repeat(4, 1fr)` | Next Steps、Deliverables |
+| 左窄右寬 | `flex: 0.8` / `flex: 1.2` | 少用，通常改成等寬 |
+
+### 對齊原則
+
+- 全頁靠左對齊（`text-align: left`），除了 Thank You 頁用 `items-center`
+- 圖片牆的說明文字才用 `text-align: center`
+- 不要 `text-align: justify`（editorial 系統不用齊行）
+
+### Highlight 邏輯（同一頁內的強弱）
+
+一頁最多 **1 個 highlight 欄/元素**：
+- 3 欄內容：第三欄 `border-top: 2px solid var(--bz-ink)`，其餘用 1px 灰線
+- 字卡：1 張黑底（`background: var(--bz-ink)`），其餘白底
+- Next Steps：1 張 NEXT 黑邊，其餘灰底
+- **超過 1 個 highlight = 沒有 highlight**，全部降回同樣權重
+
+---
+
+## 黑底頁（dark page）使用規則
+
+### 什麼時候用
+
+| 情境 | 用 dark | 不用 dark |
+|---|---|---|
+| 章節 divider | ✓ 必用 | — |
+| Anchor quote（最重要一句）| ✓ 必用 | — |
+| 定位語（Positioning）| ✓ 建議用 | — |
+| 一般內容頁 | — | ✗ |
+| 比較頁（Two Directions）| — | ✗ |
+| 色彩 / 字體頁 | — | ✗ |
+
+### 數量控制
+
+一份 30–40 頁提案，黑底頁約 **6–8 頁**（含 5 個章節分頁 + 1–3 個特殊頁）。
+超過 10 頁黑底 = 太沉重，視覺疲勞。
+
+### 黑底頁文字透明度規則
+
+```css
+主文字（白）：color: var(--bz-paper)          /* #FFFFFF */
+副文字：       color: rgba(250,250,248,0.7)    /* 70% */
+說明文字：     color: rgba(250,250,248,0.55)   /* 55% */
+eyebrow：      color: rgba(250,250,248,0.4)    /* 40% */
+```
+
+---
+
+## 出稿前 Preflight Checklist
+
+每次交給客戶前，對照這 10 條：
+
+**內容**
+- [ ] 每頁 ≤ 3 重點（沒有超過 3 個並列項）
+- [ ] 中文禁用詞都清掉（家→家宴 / 血脈→傳承 / 業主自提→下一階段深化）
+- [ ] spin-off / rebrand 英文 jargon 沒出現在中文段落
+- [ ] 所有客戶數據已交叉驗證（人均、競品、年份）
+
+**視覺**
+- [ ] 黑底頁數量 ≤ 總頁數 25%
+- [ ] 同一頁 highlight 只有 1 個
+- [ ] 圖片全部載入（沒有破圖，alt text 沒出現）
+- [ ] 頁碼連續正確（page-foot 數字對）
+
+**技術**
+- [ ] self-contained（assets 全在本機資料夾，不引用外部路徑）
+- [ ] Vercel deploy 後 curl 驗證最新版已上線
+
+---
+
 ## CSS 系統速查（`colors_and_type.css`）
 
 > 下列 token 和 class 在所有 baizhou proposal 通用，不要寫 magic number，用變數。
