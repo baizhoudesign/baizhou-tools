@@ -439,24 +439,149 @@ vercel alias set "$LATEST" 客戶名-baizhou.vercel.app
 1. **`proposal.html`** — 單檔可瀏覽的 deck（外加 colors_and_type.css + slide-system.css + deck-stage.js）
 2. **`research/` 資料夾** — 競品調查、視覺 reference、其他 sub-agent 報告
 
-每頁 HTML section 結構：
+---
+
+## 頁面模板庫（直接複製貼上，改內容就好）
+
+### 模板 A｜Cover 封面
+
+```html
+<section data-label="01 Cover">
+  <div class="frame">
+    <div class="eyebrow-row">
+      <span><span class="arrow">↗</span>BRAND IDENTITY PROPOSAL</span>
+      <span>BAIZHOU DESIGN ｜ 2026</span>
+    </div>
+    <div class="col grow" style="justify-content: center; padding-top: 40px; padding-bottom: 56px;">
+      <div>
+        <h1 class="title-en" style="font-size: 220px; font-weight: 300; letter-spacing: -0.04em; line-height: 0.92;">品牌英文名</h1>
+        <div style="height: 28px;"></div>
+        <div class="subtitle-tc" style="font-size: 76px; font-weight: 400; color: var(--bz-ink); letter-spacing: -0.005em;">品牌中文名 ｜ 副品項</div>
+      </div>
+      <div class="col" style="gap: 8px; max-width: 70%; margin-top: 96px;">
+        <div class="rule" style="margin-bottom: 28px; width: 80px;"></div>
+        <div class="body-tc" style="font-size: 26px; color: var(--bz-gray-700);">中文 tagline。</div>
+        <div class="body" style="font-size: 26px; color: var(--bz-gray-500); letter-spacing: 0.04em;">English tagline.</div>
+      </div>
+    </div>
+    <div class="page-foot" style="font-size: 24px;">
+      <img src="assets/baizhou-logo.png" style="height: 64px;">
+      <span></span>
+    </div>
+  </div>
+</section>
+```
+
+---
+
+### 模板 B｜Chapter Divider 章節分頁（黑底）
+
+```html
+<section data-label="NN Chapter 0X" class="dark">
+  <div class="frame center">
+    <div class="eyebrow-row">
+      <span><span class="arrow">↗</span>CHAPTER 章節英文</span>
+      <span>品牌名 ｜ BRAND PROPOSAL</span>
+    </div>
+    <div class="col" style="gap: 64px;">
+      <div class="chapter-num">01</div>
+      <div class="rule" style="background: var(--bz-paper); width: 96px;"></div>
+      <h2 class="title-en" style="font-size: 132px; font-weight: 300; letter-spacing: -0.03em;">Background</h2>
+      <div class="title-tc" style="font-size: 64px; font-weight: 400; color: rgba(250,250,248,0.7);">品牌脈絡</div>
+      <div class="body-tc" style="font-size: 32px; max-width: 900px; color: rgba(250,250,248,0.55); margin-top: 24px;">章節引言一句話。</div>
+    </div>
+    <div class="page-foot"><span></span></div>
+  </div>
+</section>
+```
+
+> 五個章節對應：Background / Market / Strategy / Identity / Rollout
+
+---
+
+### 模板 C｜Standard Content 標準內容頁（3 欄 grid）
 
 ```html
 <section data-label="NN 頁名">
   <div class="frame">
     <div class="eyebrow-row">
-      <span><span class="arrow">↗</span>章節 ｜ NN.x</span>
-      <span>頁面右上 hint</span>
+      <span><span class="arrow">↗</span>章節大寫 ｜ 0X.N</span>
+      <span>右上 hint 文字</span>
     </div>
-    <div class="col grow" style="padding-top: 32px; padding-bottom: 60px;">
+    <div class="col grow" style="padding-top: 40px;">
       <h2 class="title-en">Page title.</h2>
-      <div class="subtitle-tc">中文副標</div>
-      <!-- 內容（每頁 ≤ 3 重點） -->
+      <div class="subtitle-tc" style="margin-top: 20px; color: var(--bz-gray-700);">中文副標</div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px; flex: 1; margin-top: 40px;">
+        <div class="col" style="border-top: 1px solid var(--bz-gray-300); padding-top: 32px;">
+          <div class="num" style="font-size: 64px; font-weight: 300; color: var(--bz-gray-400); letter-spacing: -0.02em;">01</div>
+          <div class="title-en" style="font-size: 36px; margin-top: 24px;">Column Title</div>
+          <div class="title-tc" style="font-size: 36px; margin-top: 8px;">中文標</div>
+          <div class="body-tc" style="font-size: 26px; margin-top: 24px;">說明文字，一到三句。</div>
+        </div>
+        <!-- 複製上方 div 兩次，第三欄 border-top: 2px solid var(--bz-ink) 做 highlight -->
+      </div>
     </div>
-    <div class="page-foot">
-      <span></span>
-      <span>NN / 總頁數</span>
+    <div class="page-foot"><span></span><span>NN / 總頁數</span></div>
+  </div>
+</section>
+```
+
+> **Highlight 規則：** 第三欄（最重要的那欄）用 `border-top: 2px solid var(--bz-ink)` + `font-weight: 500`，其餘用細線。
+
+---
+
+### 模板 D｜Two Directions A vs B 比較頁
+
+```html
+<section data-label="NN Two Directions">
+  <div class="frame">
+    <div class="eyebrow-row">
+      <span><span class="arrow">↗</span>IDENTITY ｜ 04.0</span>
+      <span>OVERVIEW</span>
     </div>
+    <h2 class="title-en" style="font-size: 64px;">Two directions.</h2>
+    <div class="subtitle-tc" style="margin-top: 12px; color: var(--bz-gray-700); font-size: 32px;">兩個方向，同一個策略</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; flex: 1; margin-top: 40px; min-height: 0;">
+      <!-- Direction A -->
+      <div class="col" style="border: 1px solid var(--bz-gray-300); padding: 0; overflow: hidden;">
+        <div style="flex: 1; min-height: 0; border-bottom: 1px solid var(--bz-gray-200); background-image: url('assets/logo-direction-a.png'); background-size: contain; background-repeat: no-repeat; background-position: center; background-color: var(--bz-gray-50);"></div>
+        <div class="col" style="padding: 28px 32px; gap: 8px; flex: 0 0 auto;">
+          <div class="eyebrow" style="color: var(--bz-ink);">DIRECTION A</div>
+          <div class="title-en" style="font-size: 44px; font-weight: 500; margin-top: 4px;">概念英文名.</div>
+          <div class="title-tc" style="font-size: 32px; font-weight: 500;">概念中文名</div>
+          <div class="body-tc" style="font-size: 22px; margin-top: 4px; line-height: 1.45;">一句話說明這個方向的設計邏輯。</div>
+        </div>
+      </div>
+      <!-- Direction B（同結構，border 改細灰） -->
+      <div class="col" style="border: 1px solid var(--bz-gray-300); padding: 0; overflow: hidden;">
+        <!-- 同上，改 assets/logo-direction-b.png + B 的內容 -->
+      </div>
+    </div>
+    <div class="page-foot"><span></span><span>NN / 總頁數</span></div>
+  </div>
+</section>
+```
+
+---
+
+### 模板 E｜Anchor Quote 黑底錨點頁
+
+```html
+<section data-label="NN Anchor" class="dark">
+  <div class="frame center">
+    <div class="eyebrow-row">
+      <span><span class="arrow">↗</span>IDENTITY ｜ 04.1</span>
+      <span>THE ANCHOR</span>
+    </div>
+    <div class="col grow" style="justify-content: center; max-width: 1100px;">
+      <div class="eyebrow" style="color: rgba(250,250,248,0.4); margin-bottom: 48px;">最重要的一句話</div>
+      <h2 class="title-en" style="font-size: 84px; font-weight: 300; letter-spacing: -0.025em; line-height: 1.05; color: var(--bz-paper);">
+        "在這裡你一個人吃飯，<br>也像在自己家裡辦了一桌席。"
+      </h2>
+      <div class="rule" style="background: rgba(250,250,248,0.2); margin-top: 56px; width: 120px;"></div>
+      <div class="body-tc" style="font-size: 26px; color: rgba(250,250,248,0.5); margin-top: 32px;">所有設計決策都以這句話為檢核標準</div>
+    </div>
+    <div class="page-foot"><span></span></div>
   </div>
 </section>
 ```
